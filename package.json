@@ -3,23 +3,18 @@
   "version": "0.1",
   "description": "BCC dollar course picker",
   "engines": {
-    "node": "8.9.1"
+    "node": "4.4.7"
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node course_update.js"
   },
   "dependencies": {
-    "ejs": "^2.5.6",
-    "express": "^4.15.2"
-  },
-  "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
+    "phantomjs": "^2.1.7"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/Kaluchii/bcc_course_picker.git"
   },
   "license": "MIT"
 }
