@@ -3,7 +3,7 @@
   "version": "0.1",
   "description": "BCC dollar course picker",
   "engines": {
-    "node": "4.4.7"
+    "node": "5.9.1"
   },
   "main": "index.js",
   "scripts": {
