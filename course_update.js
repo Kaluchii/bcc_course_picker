@@ -1,31 +1,28 @@
 var page = require('webpage').create();
 var fs = require('fs');
-var path = 'courses.json';
-page.onConsoleMessage = function(msg) {
-    if (msg == '') {
-        console.log('Error: "could not load the course"');
-    } else {
-        console.log('New course: ' + msg);
-    }
-};
+var path = '/var/www/public_html/bcc_course_picker/courses.json';
+var logPath = '/var/www/public_html/bcc_course_picker/status.log';
 page.open('https://www.bcc.kz/about/kursy-valyut/', function(status) {
-    console.log("Status: " + status);
+    var now = new Date();
+    fs.write(logPath, "Status: " + status + '.  ', 'w+');
     if (status){
         setTimeout(function () {
             var courses = page.evaluate(function() {
                 var courseObj = { courses: {} };
                 courseObj.courses.usd = $('.bcc_full .s_table_over:nth-child(5) tbody tr:nth-child(3) td:nth-child(3)').text();
-                console.log(courseObj.courses.usd);
                 return courseObj;
             }, 'courses');
             if (courses.courses.usd == '') {
+                fs.write(logPath, 'Error: "could not load the course"' + "   " + now + '\n', 'w+');
                 phantom.exit();
             } else {
+                fs.write(logPath, now + '\n', 'w+');
                 fs.write(path, JSON.stringify(courses, null, 2), 'w');
                 phantom.exit();
             }
         }, 5000);
     } else {
+        fs.write(logPath, now + '\n', 'w+');
         phantom.exit();
     }
 });
