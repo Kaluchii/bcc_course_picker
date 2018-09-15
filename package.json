@@ -4,14 +4,16 @@
   "description": "BCC dollar course picker",
   "engines": {
     "node": "6.11.x",
-    "npm": "3.10.x"
+    "npm": "6.4.x"
   },
   "main": "index.js",
   "scripts": {
     "start": "node course_update.js"
   },
   "dependencies": {
-    "phantomjs": "^2.1.7"
+    "fs": "0.0.1-security",
+    "phantomjs": "^2.1.7",
+    "webpage": "^0.3.0"
   },
   "repository": {
     "type": "git",
